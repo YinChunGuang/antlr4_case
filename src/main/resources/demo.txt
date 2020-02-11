@@ -1,0 +1,10 @@
+object Main {
+
+    val m = 4
+
+    val n = 30
+
+    val mn = m + n
+
+
+}
