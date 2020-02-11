@@ -21,5 +21,18 @@ class MyCSVVisitor extends CSVBaseVisitor[Any] {
       .collect{case (node, index) if index % 2 == 0 => node}
       .foreach(node => println(node.getText))
 
-    super.visitHdr(ctx)}
+    super.visitHdr(ctx)
+  }
+
+  /**
+   * {@inheritDoc }
+   *
+   * <p>The default implementation returns the result of calling
+   * {@link #visitChildren} on {@code ctx}.</p>
+   */
+  override def visitFile(ctx: _root_.csv_gen.CSVParser.FileContext): Any = {
+
+    println(s"总共有${ctx.children.size() - 1}条记录")
+
+    super.visitFile(ctx)}
 }
