@@ -274,6 +274,7 @@ public class ExprParser extends Parser {
 	}
 
 	public static class ExprContext extends ParserRuleContext {
+		public int value;
 		public ExprContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -282,6 +283,7 @@ public class ExprParser extends Parser {
 		public ExprContext() { }
 		public void copyFrom(ExprContext ctx) {
 			super.copyFrom(ctx);
+			this.value = ctx.value;
 		}
 	}
 	public static class ParentContext extends ExprContext {

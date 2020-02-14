@@ -12,7 +12,7 @@ stat: expr NEWLINE              # Expr_NewLine
 
 
 
-expr : expr Mult_Div=('*' | '/') expr       # Mult_Div     // MULT 是 '*'
+expr returns [int value] : expr Mult_Div=('*' | '/') expr       # Mult_Div     // MULT 是 '*'
       | expr ADD_Sub=('+' | '-')  expr      # ADD_Sub       // ADD 是 '+'
       | '(' expr ')'                        # Parent
       | INT                                 # Int

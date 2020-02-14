@@ -23,6 +23,11 @@ class MyExprListener extends ExprBaseListener{
 
     stack.push(r)
 
+    val f = ctx.expr(0).value
+    val s = ctx.expr(1).value
+    val r2 = if (op == "+") f + s else f - s
+    ctx.value = r2
+
   }
 
   /**
@@ -33,5 +38,7 @@ class MyExprListener extends ExprBaseListener{
   override def exitInt(ctx: ExprParser.IntContext): Unit = {
 
     stack.push(ctx.INT().getText.toInt)
+
+    ctx.value = ctx.INT().getText.toInt
   }
 }
