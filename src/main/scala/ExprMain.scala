@@ -1,9 +1,10 @@
 import java.nio.file.Paths
 
-import csv_gen.{CSVLexer, CSVParser}
 import expr_gen.{ExprLexer, ExprParser}
+import listener.MyExprListener
+import org.antlr.v4.runtime.tree.ParseTreeWalker
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
-import visitor.{MyCSVVisitor, MyExprVisitor}
+import visitor. MyExprVisitor
 
 
 object ExprMain {
@@ -21,7 +22,15 @@ object ExprMain {
 
         val visitor = new MyExprVisitor
 
-        val newtree = visitor.visit(parser.prog())
+        val tree = parser.prog()
+
+        val newtree = visitor.visit(tree)
+
+        val walk = new ParseTreeWalker
+
+        val listener = new MyExprListener
+
+        walk.walk(listener, tree)
 
 
 
