@@ -1,7 +1,7 @@
 import java.nio.file.Paths
 
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
-import parser.MyRVisitor
+import visitor.MyRVisitor
 import r_gen.{RLexer, RParser}
 
 

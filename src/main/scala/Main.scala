@@ -2,7 +2,7 @@ import java.nio.file.Paths
 
 import gen.{ScalaBaseVisitor, ScalaLexer, ScalaParser}
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
-import parser.MyScalaVisitor
+import visitor.MyScalaVisitor
 
 object Main {
 

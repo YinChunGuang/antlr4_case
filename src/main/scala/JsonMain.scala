@@ -2,7 +2,7 @@ import java.nio.file.Paths
 
 import json_gen.{JsonLexer, JsonParser}
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
-import parser.MyJsonVisitor
+import visitor.MyJsonVisitor
 
 
 object JsonMain {

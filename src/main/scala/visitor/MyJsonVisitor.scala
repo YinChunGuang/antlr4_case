@@ -1,4 +1,4 @@
-package parser
+package visitor
 
 import json_gen.JsonBaseVisitor
 

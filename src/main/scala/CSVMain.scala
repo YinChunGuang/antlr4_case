@@ -2,7 +2,7 @@ import java.nio.file.Paths
 
 import csv_gen.{CSVLexer, CSVParser}
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
-import parser.MyCSVVisitor
+import visitor.MyCSVVisitor
 
 
 object CSVMain {

@@ -2,7 +2,7 @@ import java.nio.file.Paths
 
 import cymbol_gen.{CymbolLexer, CymbolParser}
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
-import parser.{MyCSVVisitor, MyCymbolVisitor}
+import visitor.{MyCSVVisitor, MyCymbolVisitor}
 
 
 object CymbolMain {

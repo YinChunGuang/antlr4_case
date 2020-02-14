@@ -3,7 +3,7 @@ import java.nio.file.Paths
 import csv_gen.{CSVLexer, CSVParser}
 import dot_gen.{DotLexer, DotParser}
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
-import parser.{MyCSVVisitor, MyDotVisitor}
+import visitor.{MyCSVVisitor, MyDotVisitor}
 
 
 object DotMain {

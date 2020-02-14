@@ -1,4 +1,4 @@
-package parser
+package visitor
 
 import dot_gen.DotBaseVisitor
 

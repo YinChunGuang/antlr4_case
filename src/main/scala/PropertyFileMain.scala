@@ -3,7 +3,7 @@ import java.nio.file.Paths
 import listener.MyPropertyFileListener
 import org.antlr.v4.runtime.tree.ParseTreeWalker
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
-import parser.MyPropertyFileVisitor
+import visitor.MyPropertyFileVisitor
 import propertyfile_gen.{PropertyFileLexer, PropertyFileParser}
 
 
@@ -24,6 +24,9 @@ object PropertyFileMain {
 
         val tree = parser.file()
         val newtree = visitor.visit(tree)
+
+        println(s"visitor running")
+        visitor.properties.foreach(println)
 
         val listener = new MyPropertyFileListener
 
