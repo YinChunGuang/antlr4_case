@@ -1,5 +1,7 @@
 import java.nio.file.Paths
 
+import listener.MyPropertyFileListener
+import org.antlr.v4.runtime.tree.ParseTreeWalker
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
 import parser.MyPropertyFileVisitor
 import propertyfile_gen.{PropertyFileLexer, PropertyFileParser}
@@ -20,19 +22,17 @@ object PropertyFileMain {
 
         val visitor = new MyPropertyFileVisitor
 
-        val newtree = visitor.visit(parser.file())
+        val tree = parser.file()
+        val newtree = visitor.visit(tree)
 
-        // 接下来则是自己的一些逻辑思考的过程!!!
+        val listener = new MyPropertyFileListener
 
-        // 复合类型与聚合类型
+        val walker = new ParseTreeWalker
 
-        // enum Color {
-        //  case Red, Blue, Green  # 复合类型
-        //  }
+        walker.walk(listener, tree)
 
-        // 聚合类型
-        // case class (name: String, age: Int, gender: Genders)  聚合类型
-        //
+        println(s"listener running...")
+        listener.properties.foreach(println)
 
 
 
