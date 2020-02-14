@@ -1,9 +1,8 @@
 import java.nio.file.Paths
 
-import csv_gen.{CSVLexer, CSVParser}
 import fuzzyjava_gen.{FuzzyJavaLexer, FuzzyJavaParser}
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
-import visitor.MyCSVVisitor
+
 
 
 object FuzzyJavaMain {
