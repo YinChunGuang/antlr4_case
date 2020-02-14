@@ -1,8 +1,7 @@
 import java.nio.file.Paths
 
-import csv_gen.{CSVLexer, CSVParser}
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
-import parser.{MyCSVVisitor, MyRVisitor}
+import parser.MyRVisitor
 import r_gen.{RLexer, RParser}
 
 
