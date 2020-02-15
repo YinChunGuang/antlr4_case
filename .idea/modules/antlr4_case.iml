@@ -9,6 +9,8 @@
       <sourceFolder url="file://$MODULE_DIR$/../../src/test/scala" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.13/src_managed/main" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.13/src_managed/main/antlr4" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/../../target" />
       <excludeFolder url="file://$MODULE_DIR$/../../target/resolution-cache" />
       <excludeFolder url="file://$MODULE_DIR$/../../target/streams" />
@@ -16,6 +18,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang.modules:scala-collection-contrib_2.13:0.2.1:jar" level="project" />
     <orderEntry type="library" name="sbt: org.antlr:antlr4-runtime:4.8:jar" level="project" />
   </component>
 </module>

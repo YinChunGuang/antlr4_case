@@ -1,0 +1,12 @@
+{
+    "wangpeng" : {
+
+        "bingbinggou" : "\uffff",
+
+        "反乌托邦": {
+            "KKK": ["kk", "vv"],
+            "qqq": {},
+            "mmm": []
+        }
+    }
+}
