@@ -1,6 +1,8 @@
 import java.nio.file.Paths
 
 import json_gen.{JsonLexer, JsonParser}
+import listener.XMLEmitter
+import org.antlr.v4.runtime.tree.ParseTreeWalker
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
 import visitor.MyJsonVisitor
 
@@ -18,21 +20,21 @@ object JsonMain {
 
         val parser = new JsonParser(tokenStream)
 
+        val tree = parser.json()
+
         val visitor = new MyJsonVisitor
 
-        val newtree = visitor.visit(parser.json())
+        val newtree = visitor.visit(tree)
 
-        // 接下来则是自己的一些逻辑思考的过程!!!
+        val xmlEmiter = new XMLEmitter
 
-        // 复合类型与聚合类型
+        val parseTreeWalker = new ParseTreeWalker
 
-        // enum Color {
-        //  case Red, Blue, Green  # 复合类型
-        //  }
+        parseTreeWalker.walk(xmlEmiter, tree)
 
-        // 聚合类型
-        // case class (name: String, age: Int, gender: Genders)  聚合类型
-        //
+
+
+
 
 
 

@@ -18,15 +18,29 @@ public interface JsonListener extends ParseTreeListener {
 	 */
 	void exitJson(JsonParser.JsonContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JsonParser#object}.
+	 * Enter a parse tree produced by the {@code AnObject}
+	 * labeled alternative in {@link JsonParser#object}.
 	 * @param ctx the parse tree
 	 */
-	void enterObject(JsonParser.ObjectContext ctx);
+	void enterAnObject(JsonParser.AnObjectContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JsonParser#object}.
+	 * Exit a parse tree produced by the {@code AnObject}
+	 * labeled alternative in {@link JsonParser#object}.
 	 * @param ctx the parse tree
 	 */
-	void exitObject(JsonParser.ObjectContext ctx);
+	void exitAnObject(JsonParser.AnObjectContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code EmptyObject}
+	 * labeled alternative in {@link JsonParser#object}.
+	 * @param ctx the parse tree
+	 */
+	void enterEmptyObject(JsonParser.EmptyObjectContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code EmptyObject}
+	 * labeled alternative in {@link JsonParser#object}.
+	 * @param ctx the parse tree
+	 */
+	void exitEmptyObject(JsonParser.EmptyObjectContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JsonParser#pair}.
 	 * @param ctx the parse tree
@@ -48,13 +62,51 @@ public interface JsonListener extends ParseTreeListener {
 	 */
 	void exitArray(JsonParser.ArrayContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link JsonParser#value}.
+	 * Enter a parse tree produced by the {@code String}
+	 * labeled alternative in {@link JsonParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void enterValue(JsonParser.ValueContext ctx);
+	void enterString(JsonParser.StringContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JsonParser#value}.
+	 * Exit a parse tree produced by the {@code String}
+	 * labeled alternative in {@link JsonParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void exitValue(JsonParser.ValueContext ctx);
+	void exitString(JsonParser.StringContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Atom}
+	 * labeled alternative in {@link JsonParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterAtom(JsonParser.AtomContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Atom}
+	 * labeled alternative in {@link JsonParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitAtom(JsonParser.AtomContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ObjectValue}
+	 * labeled alternative in {@link JsonParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterObjectValue(JsonParser.ObjectValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ObjectValue}
+	 * labeled alternative in {@link JsonParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitObjectValue(JsonParser.ObjectValueContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ArrayValue}
+	 * labeled alternative in {@link JsonParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterArrayValue(JsonParser.ArrayValueContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ArrayValue}
+	 * labeled alternative in {@link JsonParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitArrayValue(JsonParser.ArrayValueContext ctx);
 }

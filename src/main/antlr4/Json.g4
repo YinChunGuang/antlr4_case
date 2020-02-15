@@ -7,24 +7,24 @@ json: object
     ;
 
 object
-    : '{' pair (',' pair)* '}'
-    | '{' '}' // 空对象
+    : '{' pair (',' pair)* '}' # AnObject
+    | '{' '}'                  # EmptyObject // 空对象
     ;
 pair: STRING ':' value ;
 
 array
     : '[' value (',' value)* ']'
-    | '[' ']' // 空数组
+    | '[' ']'
     ;
 
 value
-    : STRING
-    | NUMBER
-    | object // 递归调用
-    | array  // 递归调用
-    | 'true' // 关键字
-    | 'false' // 关键字
-    | 'null'
+    : STRING    # String
+    | NUMBER    # Atom
+    | object    # ObjectValue    // 递归调用
+    | array     # ArrayValue     // 递归调用
+    | 'true'    # Atom           // 关键字
+    | 'false'   # Atom           // 关键字
+    | 'null'    # Atom
     ;
 
 // 从编码的角度来看,这些词法分析器也是具有优先级的策略,这在以后做词法分析的时候也得要考虑的到

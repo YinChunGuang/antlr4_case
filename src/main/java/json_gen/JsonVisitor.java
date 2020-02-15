@@ -17,11 +17,19 @@ public interface JsonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitJson(JsonParser.JsonContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JsonParser#object}.
+	 * Visit a parse tree produced by the {@code AnObject}
+	 * labeled alternative in {@link JsonParser#object}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitObject(JsonParser.ObjectContext ctx);
+	T visitAnObject(JsonParser.AnObjectContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code EmptyObject}
+	 * labeled alternative in {@link JsonParser#object}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEmptyObject(JsonParser.EmptyObjectContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JsonParser#pair}.
 	 * @param ctx the parse tree
@@ -35,9 +43,31 @@ public interface JsonVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitArray(JsonParser.ArrayContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link JsonParser#value}.
+	 * Visit a parse tree produced by the {@code String}
+	 * labeled alternative in {@link JsonParser#value}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitValue(JsonParser.ValueContext ctx);
+	T visitString(JsonParser.StringContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Atom}
+	 * labeled alternative in {@link JsonParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAtom(JsonParser.AtomContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ObjectValue}
+	 * labeled alternative in {@link JsonParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitObjectValue(JsonParser.ObjectValueContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ArrayValue}
+	 * labeled alternative in {@link JsonParser#value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArrayValue(JsonParser.ArrayValueContext ctx);
 }
