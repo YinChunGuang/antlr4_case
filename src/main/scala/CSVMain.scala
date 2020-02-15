@@ -1,6 +1,8 @@
 import java.nio.file.Paths
 
 import csv_gen.{CSVLexer, CSVParser}
+import listener.CSVLoader
+import org.antlr.v4.runtime.tree.ParseTreeWalker
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
 import visitor.MyCSVVisitor
 
@@ -18,22 +20,20 @@ object CSVMain {
 
         val parser = new CSVParser(tokenStream)
 
-        val visitor = new MyCSVVisitor
+//        val visitor = new MyCSVVisitor
 
-        val newtree = visitor.visit(parser.file())
+//        val newtree = visitor.visit(parser.file())
 
-        // 接下来则是自己的一些逻辑思考的过程!!!
+        val csvLoader = new CSVLoader
 
-        // 复合类型与聚合类型
+        val treeWalker = new ParseTreeWalker
 
-        // enum Color {
-        //  case Red, Blue, Green  # 复合类型
-        //  }
+        treeWalker.walk(csvLoader, parser.file())
 
-        // 聚合类型
-        // case class (name: String, age: Int, gender: Genders)  聚合类型
-        //
-
+        println(s"value is ${csvLoader.rows.foreach{
+            row => row.iterator.foreach(println(_))
+            println()
+        }}")
 
 
     }

@@ -1,14 +1,33 @@
 grammar Demo ;
 
-r : ACTION3 ;
+file : row row* ;
 
-ACTION1 : '{' (STRING | .)*? '}' ;
+row : Filed (',' Filed)* '\r'? '\n';
 
-ACTION2 : '[' (STRING | ~'"')*? ']' ;
+Filed : ~[,\r\n]+ ;
 
-ACTION3 : '<' (STRING | ~[">])* '>' ;
 
-STRING : '"' ('\\"' | .)*? '"' ;
+//NL : [\r\n]+  -> skip ;
+//NL : [\r\n]+  -> skip ;
+
+//r : ENUM
+//    | ID
+//    ;
+//
+//// 显然,enum是匹配到了ENUM这个关键字中的位置
+//ENUM : 'enum' ;
+//
+//ID : [a-z]+ ;
+
+//r : ACTION3 ;
+//
+//ACTION1 : '{' (STRING | .)*? '}' ;
+//
+//ACTION2 : '[' (STRING | ~'"')*? ']' ;
+//
+//ACTION3 : '<' (STRING | ~[">])* '>' ;
+//
+//STRING : '"' ('\\"' | .)*? '"' ;
 
 //r : .*? ('a' | 'ab') ;
 

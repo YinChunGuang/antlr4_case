@@ -275,23 +275,63 @@ public class CSVParser extends Parser {
 	}
 
 	public static class FieldContext extends ParserRuleContext {
-		public TerminalNode TEXT() { return getToken(CSVParser.TEXT, 0); }
-		public TerminalNode STRING() { return getToken(CSVParser.STRING, 0); }
 		public FieldContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_field; }
+	 
+		public FieldContext() { }
+		public void copyFrom(FieldContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class StringContext extends FieldContext {
+		public TerminalNode STRING() { return getToken(CSVParser.STRING, 0); }
+		public StringContext(FieldContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CSVListener ) ((CSVListener)listener).enterField(this);
+			if ( listener instanceof CSVListener ) ((CSVListener)listener).enterString(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CSVListener ) ((CSVListener)listener).exitField(this);
+			if ( listener instanceof CSVListener ) ((CSVListener)listener).exitString(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof CSVVisitor ) return ((CSVVisitor<? extends T>)visitor).visitField(this);
+			if ( visitor instanceof CSVVisitor ) return ((CSVVisitor<? extends T>)visitor).visitString(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class TextContext extends FieldContext {
+		public TerminalNode TEXT() { return getToken(CSVParser.TEXT, 0); }
+		public TextContext(FieldContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CSVListener ) ((CSVListener)listener).enterText(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CSVListener ) ((CSVListener)listener).exitText(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CSVVisitor ) return ((CSVVisitor<? extends T>)visitor).visitText(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class EmptyContext extends FieldContext {
+		public EmptyContext(FieldContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CSVListener ) ((CSVListener)listener).enterEmpty(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CSVListener ) ((CSVListener)listener).exitEmpty(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CSVVisitor ) return ((CSVVisitor<? extends T>)visitor).visitEmpty(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -303,25 +343,28 @@ public class CSVParser extends Parser {
 			setState(32);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case T__0:
-			case T__1:
-			case T__2:
+			case TEXT:
+				_localctx = new TextContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				}
-				break;
-			case TEXT:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(30);
+				setState(29);
 				match(TEXT);
 				}
 				break;
 			case STRING:
+				_localctx = new StringContext(_localctx);
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(30);
+				match(STRING);
+				}
+				break;
+			case T__0:
+			case T__1:
+			case T__2:
+				_localctx = new EmptyContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(31);
-				match(STRING);
 				}
 				break;
 			default:
@@ -348,8 +391,8 @@ public class CSVParser extends Parser {
 		"\16\17\3\2\2\2\17\3\3\2\2\2\20\21\5\6\4\2\21\5\3\2\2\2\22\27\5\b\5\2\23"+
 		"\24\7\3\2\2\24\26\5\b\5\2\25\23\3\2\2\2\26\31\3\2\2\2\27\25\3\2\2\2\27"+
 		"\30\3\2\2\2\30\33\3\2\2\2\31\27\3\2\2\2\32\34\7\4\2\2\33\32\3\2\2\2\33"+
-		"\34\3\2\2\2\34\35\3\2\2\2\35\36\7\5\2\2\36\7\3\2\2\2\37#\3\2\2\2 #\7\6"+
-		"\2\2!#\7\7\2\2\"\37\3\2\2\2\" \3\2\2\2\"!\3\2\2\2#\t\3\2\2\2\6\16\27\33"+
+		"\34\3\2\2\2\34\35\3\2\2\2\35\36\7\5\2\2\36\7\3\2\2\2\37#\7\6\2\2 #\7\7"+
+		"\2\2!#\3\2\2\2\"\37\3\2\2\2\" \3\2\2\2\"!\3\2\2\2#\t\3\2\2\2\6\16\27\33"+
 		"\"";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
