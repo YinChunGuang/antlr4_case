@@ -30,16 +30,16 @@ stat : block
     | expr ';'          // 函数赋值
     ;
 
-expr : ID '(' exprList? ')' // 类似于f(), f(x), f(1,2)的函数调用表达式
-    | expr '[' expr ']'    // 类似于a[i], a[i][j]的数组索引表达式
-    | '-' expr              // 一元取反表达式
-    | '!' expr              // 布尔表达式
-    | expr '*' expr
-    | expr ('+' | '-' ) expr
-    | expr '==' expr        // 等同性表达式(它是优先级最低的运算符)
-    | ID                    // 变量引用
-    | INT
-    | '(' expr ')'
+expr : ID '(' exprList? ')'     # Call      // 类似于f(), f(x), f(1,2)的函数调用表达式
+    | expr '[' expr ']'         # Index     // 类似于a[i], a[i][j]的数组索引表达式
+    | '-' expr                  # Negate    // 一元取反表达式
+    | '!' expr                  # Not       // 布尔表达式
+    | expr '*' expr             # Mult
+    | expr ('+' | '-' ) expr    # AddSub
+    | expr '==' expr            # Equal     // 等同性表达式(它是优先级最低的运算符)
+    | ID                        # Var       // 变量引用
+    | INT                       # Int
+    | '(' expr ')'              # Parents
     ;
 
 exprList : expr (',' expr)* ; // 参数列表
