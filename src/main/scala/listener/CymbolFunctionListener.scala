@@ -33,11 +33,13 @@ class CymbolFunctionListener extends CymbolBaseListener {
 
       for ((src, trgs) <- edges.sets) {
         trgs.foreach{trg =>
-          buf += "  "
-          buf += src
-          buf += " -> "
-          buf += trg
-          buf += "\n"
+//          buf += "  "
+//          buf += src
+//          buf += " -> "
+//          buf += trg
+//          buf += "\n"
+
+          buf += s"  $src -> $trg\n"
         }
       }
 
