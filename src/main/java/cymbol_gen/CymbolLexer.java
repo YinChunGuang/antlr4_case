@@ -89,6 +89,12 @@ public class CymbolLexer extends Lexer {
 	}
 
 
+	// 把空白字符放入到WHITESPACE
+	public static final int WHITESPACE = 2;
+	// 把注释放入到COMMENTS
+	public static final int COMMENTS = 3;
+
+
 	public CymbolLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
@@ -164,11 +170,11 @@ public class CymbolLexer extends Lexer {
 		"\u00a3\u00a5\13\2\2\2\u00a4\u00a3\3\2\2\2\u00a5\u00a8\3\2\2\2\u00a6\u00a7"+
 		"\3\2\2\2\u00a6\u00a4\3\2\2\2\u00a7\u00a9\3\2\2\2\u00a8\u00a6\3\2\2\2\u00a9"+
 		"\u00aa\7,\2\2\u00aa\u00ab\7\61\2\2\u00ab\u00ac\3\2\2\2\u00ac\u00ad\b\36"+
-		"\2\2\u00ad<\3\2\2\2\u00ae\u00af\7\61\2\2\u00af\u00b0\7\61\2\2\u00b0\u00b4"+
+		"\3\2\u00ad<\3\2\2\2\u00ae\u00af\7\61\2\2\u00af\u00b0\7\61\2\2\u00b0\u00b4"+
 		"\3\2\2\2\u00b1\u00b3\n\6\2\2\u00b2\u00b1\3\2\2\2\u00b3\u00b6\3\2\2\2\u00b4"+
 		"\u00b2\3\2\2\2\u00b4\u00b5\3\2\2\2\u00b5\u00b7\3\2\2\2\u00b6\u00b4\3\2"+
-		"\2\2\u00b7\u00b8\b\37\2\2\u00b8>\3\2\2\2\n\2\u0082\u0084\u008c\u008f\u009c"+
-		"\u00a6\u00b4\3\b\2\2";
+		"\2\2\u00b7\u00b8\b\37\3\2\u00b8>\3\2\2\2\n\2\u0082\u0084\u008c\u008f\u009c"+
+		"\u00a6\u00b4\4\2\4\2\2\5\2";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -1,10 +1,23 @@
 grammar Demo ;
 
-file : row row* ;
+//r : ID ('<' '<' | '>' '>' '>' | '>' '>') ;
+r : ID ('<' '=' | '>' '=' | '>' | '<') ;
 
-row : Filed (',' Filed)* '\r'? '\n';
+ID : [a-zA-Z]+ ;
 
-Filed : ~[,\r\n]+ ;
+//r : STRING ;
+//
+//STRING : '"' .* ?'"' ;
+//STRING : '"' (ESC | .)*?'"' ;
+
+//ESC : '\\"' | '\\\\' ;   // 可以是\" 或者是 \\这样的字符串  为什么ESC中的要写入"\\"" 而不是"\""?
+                         // 因为antlr4会对该问题进行一次转义
+
+//file : row row* ;
+//
+//row : Filed (',' Filed)* '\r'? '\n';
+//
+//Filed : ~[,\r\n]+ ;
 
 
 //NL : [\r\n]+  -> skip ;

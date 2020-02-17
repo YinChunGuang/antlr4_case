@@ -1,6 +1,14 @@
 grammar Cymbol ;
 
+
 @header{package cymbol_gen;}
+
+@lexer::members {
+// 把空白字符放入到WHITESPACE
+public static final int WHITESPACE = 2;
+// 把注释放入到COMMENTS
+public static final int COMMENTS = 3;
+}
 
 file : (functionDecl | varDecl)+ ;
 
@@ -62,15 +70,15 @@ fragment WhiteSpace
    ;
 
 WS
-   :  WhiteSpace+ -> skip
+:  WhiteSpace+   ->        channel(2)       // 送到WHITSSPACE通道
    ;
 
 
 COMMENT
-   :   '/*' .*? '*/' -> skip
+   :   '/*' .*? '*/' ->     channel(3)  // 送到COMMENTS通道
    ;
 
 
 LINE_COMMENT
-   :   '//' (~[\r\n])* -> skip
+   :   '//' (~[\r\n])* ->   channel(3)  // 送到COMMENTS通道
    ;

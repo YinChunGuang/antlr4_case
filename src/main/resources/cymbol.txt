@@ -1,5 +1,7 @@
 // cymbol test
 
+int n = 10 ; // 定义一个计数器
+
 int main() {fact(); a();}
 
 float fact(int n) {

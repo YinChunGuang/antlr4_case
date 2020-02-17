@@ -1,7 +1,7 @@
 import java.nio.file.Paths
 
 import cymbol_gen.{CymbolLexer, CymbolParser}
-import listener.CymbolFunctionListener
+import listener.{CommentShifter, CymbolFunctionListener}
 import org.antlr.v4.runtime.tree.ParseTreeWalker
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
 import visitor.{MyCSVVisitor, MyCymbolVisitor}
@@ -35,6 +35,14 @@ object CymbolMain {
         val r = cymbolFunctionListener.graph.toDot
 
         println(s"r is \n $r")
+
+        println(s"--------------------------------")
+
+        val commentShifter = new CommentShifter(tokenStream)
+
+        parseTreeWalker.walk(commentShifter, tree)
+
+    print(s"${commentShifter.rewriter.getText()}")
 
 
     }
