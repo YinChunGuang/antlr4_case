@@ -3,7 +3,6 @@ import java.nio.file.Paths
 import gen.{ScalaBaseVisitor, ScalaLexer, ScalaParser}
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
 import visitor.MyScalaVisitor
-
 object Main {
 
     def main(args: Array[String]): Unit = {
@@ -32,7 +31,6 @@ object Main {
         // 聚合类型
         // case class (name: String, age: Int, gender: Genders)  聚合类型
         //
-
 
 
     }
