@@ -80,7 +80,7 @@ public class Enum2Lexer extends Lexer {
 
 
 
-	boolean java5 = true;
+	boolean java5 = false;
 
 
 	public Enum2Lexer(CharStream input) {

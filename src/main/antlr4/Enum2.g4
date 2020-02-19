@@ -7,7 +7,7 @@ grammar Enum2 ;
 boolean java5 = false;
 }
 
-stat : ID '=' expr ';' {System.out.println($ID.text + "=" + $expr.text);} ;
+stat : ID '=' expr ';' {System.out.println($ID.text + " = " + $expr.text);} ;
 
 expr : ID
     | INT

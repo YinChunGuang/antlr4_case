@@ -129,7 +129,7 @@ public class Enum2Parser extends Parser {
 			((StatContext)_localctx).expr = expr();
 			setState(7);
 			match(T__1);
-			System.out.println((((StatContext)_localctx).ID!=null?((StatContext)_localctx).ID.getText():null) + "=" + (((StatContext)_localctx).expr!=null?_input.getText(((StatContext)_localctx).expr.start,((StatContext)_localctx).expr.stop):null));
+			System.out.println((((StatContext)_localctx).ID!=null?((StatContext)_localctx).ID.getText():null) + " = " + (((StatContext)_localctx).expr!=null?_input.getText(((StatContext)_localctx).expr.start,((StatContext)_localctx).expr.stop):null));
 			}
 		}
 		catch (RecognitionException re) {

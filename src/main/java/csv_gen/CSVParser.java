@@ -1,5 +1,8 @@
 // Generated from D:/sbt_code_base/antlr4_case/src/main/antlr4\CSV.g4 by ANTLR 4.8
+
 package csv_gen;
+import java.util.*;
+
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -90,6 +93,10 @@ public class CSVParser extends Parser {
 	}
 
 	public static class FileContext extends ParserRuleContext {
+		public int i = 0;
+		public HdrContext hdr;
+		public RowContext row;
+		public List<RowContext> rows = new ArrayList<RowContext>();
 		public HdrContext hdr() {
 			return getRuleContext(HdrContext.class,0);
 		}
@@ -126,21 +133,29 @@ public class CSVParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(8);
-			hdr();
-			setState(10); 
+			((FileContext)_localctx).hdr = hdr();
+			setState(12); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
 				setState(9);
-				row();
+				((FileContext)_localctx).row = row((((FileContext)_localctx).hdr!=null?_input.getText(((FileContext)_localctx).hdr.start,((FileContext)_localctx).hdr.stop):null).split(","));
+				((FileContext)_localctx).rows.add(((FileContext)_localctx).row);
+				_localctx.i++;
 				}
 				}
-				setState(12); 
+				setState(14); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << T__2) | (1L << TEXT) | (1L << STRING))) != 0) );
+
+			    System.out.println(_localctx.i + " rows");
+			    for (RowContext r: ((FileContext)_localctx).rows) {
+			        System.out.println("row token interval: " + r.getSourceInterval());
+			      }
+			    
 			}
 		}
 		catch (RecognitionException re) {
@@ -183,8 +198,9 @@ public class CSVParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(14);
-			row();
+			setState(18);
+			row(null);
+			System.out.println("header: '" +_input.getText(_localctx.start, _input.LT(-1)).trim() + "'");
 			}
 		}
 		catch (RecognitionException re) {
@@ -199,14 +215,20 @@ public class CSVParser extends Parser {
 	}
 
 	public static class RowContext extends ParserRuleContext {
+		public String[] columns;
+		public Map<String, String> values;
+		public int col = 0;
+		public FieldContext field;
 		public List<FieldContext> field() {
 			return getRuleContexts(FieldContext.class);
 		}
 		public FieldContext field(int i) {
 			return getRuleContext(FieldContext.class,i);
 		}
-		public RowContext(ParserRuleContext parent, int invokingState) {
+		public RowContext(ParserRuleContext parent, int invokingState) { super(parent, invokingState); }
+		public RowContext(ParserRuleContext parent, int invokingState, String[] columns) {
 			super(parent, invokingState);
+			this.columns = columns;
 		}
 		@Override public int getRuleIndex() { return RULE_row; }
 		@Override
@@ -224,44 +246,63 @@ public class CSVParser extends Parser {
 		}
 	}
 
-	public final RowContext row() throws RecognitionException {
-		RowContext _localctx = new RowContext(_ctx, getState());
+	public final RowContext row(String[] columns) throws RecognitionException {
+		RowContext _localctx = new RowContext(_ctx, getState(), columns);
 		enterRule(_localctx, 4, RULE_row);
+
+		    ((RowContext)_localctx).values =  new HashMap<String, String>();
+
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(16);
-			field();
 			setState(21);
+			((RowContext)_localctx).field = field();
+
+			        if (_localctx.columns != null) {
+			            _localctx.values.put(_localctx.columns[_localctx.col++].trim(), (((RowContext)_localctx).field!=null?_input.getText(((RowContext)_localctx).field.start,((RowContext)_localctx).field.stop):null).trim());
+			        }
+			    
+			setState(29);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__0) {
 				{
 				{
-				setState(17);
-				match(T__0);
-				setState(18);
-				field();
-				}
-				}
 				setState(23);
+				match(T__0);
+				setState(24);
+				((RowContext)_localctx).field = field();
+
+				        if (_localctx.columns != null) {
+				                    _localctx.values.put(_localctx.columns[_localctx.col++].trim(), (((RowContext)_localctx).field!=null?_input.getText(((RowContext)_localctx).field.start,((RowContext)_localctx).field.stop):null).trim());
+				                }
+				    
+				}
+				}
+				setState(31);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(25);
+			setState(33);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==T__1) {
 				{
-				setState(24);
+				setState(32);
 				match(T__1);
 				}
 			}
 
-			setState(27);
+			setState(35);
 			match(T__2);
 			}
+			_ctx.stop = _input.LT(-1);
+
+			    if (_localctx.values != null && _localctx.values.size() > 0) {
+			        System.out.println("values = " + _localctx.values);
+			    }
+
 		}
 		catch (RecognitionException re) {
 			_localctx.exception = re;
@@ -340,14 +381,14 @@ public class CSVParser extends Parser {
 		FieldContext _localctx = new FieldContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_field);
 		try {
-			setState(32);
+			setState(40);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case TEXT:
 				_localctx = new TextContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(29);
+				setState(37);
 				match(TEXT);
 				}
 				break;
@@ -355,7 +396,7 @@ public class CSVParser extends Parser {
 				_localctx = new StringContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(30);
+				setState(38);
 				match(STRING);
 				}
 				break;
@@ -383,17 +424,18 @@ public class CSVParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\7%\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\3\2\3\2\6\2\r\n\2\r\2\16\2\16\3\3\3\3\3\4\3\4\3\4\7"+
-		"\4\26\n\4\f\4\16\4\31\13\4\3\4\5\4\34\n\4\3\4\3\4\3\5\3\5\3\5\5\5#\n\5"+
-		"\3\5\2\2\6\2\4\6\b\2\2\2%\2\n\3\2\2\2\4\20\3\2\2\2\6\22\3\2\2\2\b\"\3"+
-		"\2\2\2\n\f\5\4\3\2\13\r\5\6\4\2\f\13\3\2\2\2\r\16\3\2\2\2\16\f\3\2\2\2"+
-		"\16\17\3\2\2\2\17\3\3\2\2\2\20\21\5\6\4\2\21\5\3\2\2\2\22\27\5\b\5\2\23"+
-		"\24\7\3\2\2\24\26\5\b\5\2\25\23\3\2\2\2\26\31\3\2\2\2\27\25\3\2\2\2\27"+
-		"\30\3\2\2\2\30\33\3\2\2\2\31\27\3\2\2\2\32\34\7\4\2\2\33\32\3\2\2\2\33"+
-		"\34\3\2\2\2\34\35\3\2\2\2\35\36\7\5\2\2\36\7\3\2\2\2\37#\7\6\2\2 #\7\7"+
-		"\2\2!#\3\2\2\2\"\37\3\2\2\2\" \3\2\2\2\"!\3\2\2\2#\t\3\2\2\2\6\16\27\33"+
-		"\"";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\7-\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\3\2\3\2\3\2\3\2\6\2\17\n\2\r\2\16\2\20\3\2\3\2\3\3"+
+		"\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\7\4\36\n\4\f\4\16\4!\13\4\3\4\5\4$\n"+
+		"\4\3\4\3\4\3\5\3\5\3\5\5\5+\n\5\3\5\2\2\6\2\4\6\b\2\2\2-\2\n\3\2\2\2\4"+
+		"\24\3\2\2\2\6\27\3\2\2\2\b*\3\2\2\2\n\16\5\4\3\2\13\f\5\6\4\2\f\r\b\2"+
+		"\1\2\r\17\3\2\2\2\16\13\3\2\2\2\17\20\3\2\2\2\20\16\3\2\2\2\20\21\3\2"+
+		"\2\2\21\22\3\2\2\2\22\23\b\2\1\2\23\3\3\2\2\2\24\25\5\6\4\2\25\26\b\3"+
+		"\1\2\26\5\3\2\2\2\27\30\5\b\5\2\30\37\b\4\1\2\31\32\7\3\2\2\32\33\5\b"+
+		"\5\2\33\34\b\4\1\2\34\36\3\2\2\2\35\31\3\2\2\2\36!\3\2\2\2\37\35\3\2\2"+
+		"\2\37 \3\2\2\2 #\3\2\2\2!\37\3\2\2\2\"$\7\4\2\2#\"\3\2\2\2#$\3\2\2\2$"+
+		"%\3\2\2\2%&\7\5\2\2&\7\3\2\2\2\'+\7\6\2\2(+\7\7\2\2)+\3\2\2\2*\'\3\2\2"+
+		"\2*(\3\2\2\2*)\3\2\2\2+\t\3\2\2\2\6\20\37#*";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
