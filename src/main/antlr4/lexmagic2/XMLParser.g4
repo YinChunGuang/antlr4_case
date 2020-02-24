@@ -8,6 +8,7 @@ options { tokenVocab=XMLLexer; }
 
 document : prolog? misc* element misc* EOF;
 
+
 prolog : XMLDeclOpen attribute* SPECIAL_CLOSE ;
 
 content : chardata?

@@ -1,0 +1,14 @@
+class M {
+    int id ;
+    int fn(m) {
+        m = 3 ;
+    }
+}
+
+
+class MM {
+    int id ;
+    int fn(m) {
+       3
+    }
+}
