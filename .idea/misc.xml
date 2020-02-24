@@ -194,6 +194,16 @@
           <option name="language" value="" />
           <option name="generateVisitor" value="true" />
         </PerGrammarGenerationSettings>
+        <PerGrammarGenerationSettings>
+          <option name="fileName" value="$PROJECT_DIR$/src/main/antlr4/errors/Call.g4" />
+          <option name="autoGen" value="true" />
+          <option name="outputDir" value="D:\sbt_code_base\antlr4_case\src\main\java\call_gen" />
+          <option name="libDir" value="" />
+          <option name="encoding" value="utf8" />
+          <option name="pkg" value="" />
+          <option name="language" value="" />
+          <option name="generateVisitor" value="true" />
+        </PerGrammarGenerationSettings>
       </list>
     </option>
   </component>

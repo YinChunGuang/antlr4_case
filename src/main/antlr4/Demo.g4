@@ -1,7 +1,9 @@
 grammar Demo ;
 
 //r : ID ('<' '<' | '>' '>' '>' | '>' '>') ;
-r : ID ('<=' | '>' '=' | '>' | '<') ;
+r : ID (op = '<=' | '>' '=' | '>' | '<') {System.out.println("" + $ID.text)};
+
+r2 : ID op='>=' {System.out.println(" " + $ID.text + " " + $op.text);} ;
 
 LE : '<=';
 
