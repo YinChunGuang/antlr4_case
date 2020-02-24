@@ -3,6 +3,7 @@ import java.nio.file.Paths
 import call_gen.{CallLexer, CallParser}
 import org.antlr.v4.runtime.atn.PredictionMode
 import org.antlr.v4.runtime.{CharStreams, CommonTokenStream, DiagnosticErrorListener}
+import strategy.MyErrorStrategy
 
 
 object CallMain {
@@ -17,6 +18,8 @@ object CallMain {
     val tokenStream = new CommonTokenStream(lexer)
 
     val parser = new CallParser(tokenStream)
+
+    parser.setErrorHandler(new MyErrorStrategy)
 
 //    parser.getInterpreter.setPredictionMode(PredictionMode.LL_EXACT_AMBIG_DETECTION)
 
