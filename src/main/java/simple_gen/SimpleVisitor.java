@@ -1,4 +1,4 @@
-// Generated from D:/sbt_code_base/antlr4_case/src/main/antlr4/errors\Simple.g4 by ANTLR 4.8
+// Generated from D:/sbt_code_base/antlr4_case/src/main/antlr4/listener.errors\Simple.g4 by ANTLR 4.8
 
 package simple_gen;
 

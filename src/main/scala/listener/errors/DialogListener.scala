@@ -1,9 +1,10 @@
-package listener
+package listener.errors
 
 import java.awt.Color
 
 import javax.swing.{JDialog, JLabel, WindowConstants}
 import org.antlr.v4.runtime.{BaseErrorListener, Parser, RecognitionException, Recognizer}
+
 import scala.collection.JavaConverters._
 
 class DialogListener extends BaseErrorListener {

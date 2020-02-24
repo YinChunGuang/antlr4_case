@@ -1,6 +1,6 @@
-package listener
+package listener.errors
 
-import org.antlr.v4.runtime.{BaseErrorListener, CommonTokenStream, RecognitionException, Recognizer, Token}
+import org.antlr.v4.runtime._
 
 class UnderlineListener extends BaseErrorListener {
   override def syntaxError(recognizer: Recognizer[_, _], offendingSymbol: Any, line: Int, charPositionInLine: Int, msg: String, e: RecognitionException): Unit = {

@@ -1,6 +1,8 @@
-package listener
-import scala.collection.JavaConverters._
+package listener.errors
+
 import org.antlr.v4.runtime.{BaseErrorListener, Parser, RecognitionException, Recognizer}
+
+import scala.collection.JavaConverters._
 
 class VerboseListener extends BaseErrorListener {
   override def syntaxError(recognizer: Recognizer[_, _], offendingSymbol: Any, line: Int, charPositionInLine: Int, msg: String, e: RecognitionException): Unit = {

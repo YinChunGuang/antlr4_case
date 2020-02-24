@@ -1,6 +1,6 @@
 import java.nio.file.Paths
 
-import listener.{DialogListener, UnderlineListener, VerboseListener}
+import listener.errors.UnderlineListener
 import org.antlr.v4.runtime.tree.ParseTreeWalker
 import org.antlr.v4.runtime.{BaseErrorListener, CharStreams, CommonTokenStream, Parser, RecognitionException, Recognizer}
 import simple_gen.{SimpleLexer, SimpleParser}
