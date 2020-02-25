@@ -77,14 +77,14 @@ Comfortable Error Recovery in Recursive Descent Parsers].
 过程,仿佛什么事情 都没有发生一样.在本节中,我们将会看到上述术语的含义,并探究ANTLR是如何在错综复杂的情况下从错误中恢复.下面让我们首先分析
 ANTLR使用的基本错误恢复策略.
 
-# 1. 通过扫描后续词法符合来恢复 checked
+# 1. 通过扫描后续词法符合来恢复     checked
 
-# 2. 从不匹配的词法符号中恢复   checked
+# 2. 从不匹配的词法符号中恢复       checked
 
-# 3. 从子规则的错误中恢复       checked
+# 3. 从子规则的错误中恢复           checked
 
-# 4. 捕获失败的语义判定         checked 
+# 4. 捕获失败的语义判定             checked 
 
-# 5. 错误恢复机制的防护措施
+# 5. 错误恢复机制的防护措施         checked
 
 
