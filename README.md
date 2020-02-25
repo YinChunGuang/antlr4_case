@@ -68,4 +68,23 @@ op可以是对另外一条规则的应用
             ;
             
 
-    
+ANTLR的错误恢复机制基于Niklaus Wirth的早期著作[Algorithms + DataStrucres=Programs]的中心思想(以及Rodney Topor的[A Note on
+Error Recovery in Recursive Descent Parsers]),同时也包含JOsef Grosch在他的CoCo语法分析器生成器中的优秀思想[Efficient and 
+Comfortable Error Recovery in Recursive Descent Parsers].
+
+下面是ANTLR将这些思想柔和在一起实现的细节: 必要情况下,语法分析器在遇到无法匹配的词法符号的错误的时候,执行单词法符合不全和单词方法符号
+移除.如果这些方案不奏效,语法分析器将向后查找词法符号,知道它遇到一个符合当前规则的后续部分合理词法符号为止,接着语法分析器将会继续语法分析
+过程,仿佛什么事情 都没有发生一样.在本节中,我们将会看到上述术语的含义,并探究ANTLR是如何在错综复杂的情况下从错误中恢复.下面让我们首先分析
+ANTLR使用的基本错误恢复策略.
+
+# 1. 通过扫描后续词法符合来恢复
+
+# 2. 从不匹配的词法符号中恢复
+
+# 3. 从子规则的错误中恢复
+
+# 4. 捕获失败的语义判定
+
+# 5. 错误恢复机制的防护措施
+
+
