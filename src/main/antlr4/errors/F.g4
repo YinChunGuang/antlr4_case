@@ -1,5 +1,7 @@
 grammar F ;
-
+@header{
+package f_gen;
+}
 group
     : '[' expr ']' // expr规则引用的后续词法符号: {']'}
     | '(' expr ')' // expr 规则引用的后续词法符号: {')'}
