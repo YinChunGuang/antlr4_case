@@ -21,3 +21,5 @@ antlr4Version in Antlr4 := "4.8" // default: 4.7.2
 antlr4GenListener in Antlr4 := false // default: true
 
 antlr4GenVisitor in Antlr4 := true // default: false
+
+//antlr4GeneratorTask
